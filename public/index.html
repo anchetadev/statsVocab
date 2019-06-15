@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>NoteTaker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css" type="text/css">
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+    <h1>Statistics Note App</h1>
+    <div id="wrapper">
+    <div id="user-input">
+        <input class="form-control" type="text" id ='title'placeholder="Vocab word">
+        <textarea class="form-control" id="note" rows="3" placeholder="Definition"></textarea>
+      <div id="buttons">
+        <div id="action-button">
+          <button id="make-new">Submit</button>
+        </div>
+        <button id="clear-all">Delete All Notes</button>
+      </div>
+    </div>
+
+    <div id="results"></div>
+  </div>
+    <script src="app.js"></script>
+  </body>
+</html>
