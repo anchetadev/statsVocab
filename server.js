@@ -5,7 +5,6 @@ var logger = require("morgan");
 var path = require("path");
 
 var app = express();
-var dbConfig = require("./dbSetup.js")
 
 // Set the app up with morgan.
 // morgan is used to log our HTTP Requests. By setting morgan to 'dev'
