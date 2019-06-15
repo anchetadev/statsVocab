@@ -5,6 +5,7 @@ var logger = require("morgan");
 var path = require("path");
 
 var app = express();
+var dbConfig = require("./dbSetup.js")
 
 // Set the app up with morgan.
 // morgan is used to log our HTTP Requests. By setting morgan to 'dev'
@@ -20,7 +21,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Database configuration
-var databaseUrl = "notetaker";
+var databaseUrl = process.env.MONGOLAB_URI || "notetaker";
 var collections = ["notes"];
 
 // Hook mongojs config to db variable
