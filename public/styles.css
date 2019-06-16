@@ -1,12 +1,31 @@
 h1 {
-    text-align: cemter;
+    text-align: center;
 }
 #wrapper {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
 }
 
 #user-input {
-    width: 50%;
-    padding: 1%
+    width: 80%;
+    padding: 0% 1%;
+    margin: auto;
+}
+
+#results {
+  width: 80%;
+  margin: auto;
+  padding: 1% 1%;
+}
+
+.dataTitle{
+  margin: 1% 0%;
+  width: 45%;
+  height: 3em;
+}
+
+.btn-danger{
+  float: right;
+  height: 3em;
+  margin: 1% 0%;
 }

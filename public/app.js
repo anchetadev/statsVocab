@@ -10,9 +10,8 @@ function getResults() {
   $.getJSON("/all", function(data) {
     // For each note...
     for (var i = 0; i < data.length; i++) {
-      // ...populate #results with a p-tag that includes the note's title and object id
-      $("#results").prepend("<p class='data-entry' data-id=" + data[i]._id + "><span class='dataTitle' data-id=" +
-        data[i]._id + ">" + data[i].title + "</span><span class='btn btn-danger'>X</span></p>");
+      $("#results").prepend("<div class='data-entry' data-id=" + data[i]._id + "><button class='dataTitle btn' data-toggle='modal' data-target='#myModal' data-id=" +
+        data[i]._id + ">" + data[i].title + "</button><span class='btn btn-danger'>Delete Entry</span></div>");
     }
   });
 }
@@ -37,31 +36,31 @@ $(document).on("click", "#make-new", function() {
   // If that API call succeeds, add the title and a delete button for the note to the page
     .then(function(data) {
     // Add the title and delete button to the #results section
-      $("#results").prepend("<p class='data-entry' data-id=" + data._id + "><span class='dataTitle' data-id=" +
-      data._id + ">" + data.title + "</span><button class='btn btn-danger'>X</button></p>");
+      $("#results").prepend("<div class='data-entry' data-id=" + data._id + "><button class='dataTitle btn' data-toggle='modal' data-target='#myModal' data-id=" +
+      data._id + ">" + data.title + "</button><button class='btn btn-danger'>Delete Entry</button></div>");
       // Clear the note and title inputs on the page
       $("#note").val("");
       $("#title").val("");
     });
 });
 
-// When the #clear-all button is pressed
-$("#clear-all").on("click", function() {
-  // Make an AJAX GET request to delete the notes from the db
-  $.ajax({
-    type: "GET",
-    dataType: "json",
-    url: "/clearall",
-    // On a successful call, clear the #results section
-    success: function(response) {
-      $("#results").empty();
-    }
-  });
-});
+// // When the #clear-all button is pressed
+// $("#clear-all").on("click", function() {
+//   // Make an AJAX GET request to delete the notes from the db
+//   $.ajax({
+//     type: "GET",
+//     dataType: "json",
+//     url: "/clearall",
+//     // On a successful call, clear the #results section
+//     success: function(response) {
+//       $("#results").empty();
+//     }
+//   });
+// });
 
 
 // When user clicks the delete button for a note
-$(document).on("click", ".danger", function() {
+$(document).on("click", ".btn-danger", function() {
   // Save the p tag that encloses the button
   var selected = $(this).parent();
   // Make an AJAX GET request to delete the specific note
@@ -94,11 +93,8 @@ $(document).on("click", ".dataTitle", function() {
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
-      $("#note").val(data.note);
-      $("#title").val(data.title);
-      // Make the #action-button an update button, so user can
-      // Update the note s/he chooses
-      $("#action-button").html("<button id='updater' data-id='" + data._id + "'>Update</button>");
+      $(".modal-title").html(data.note);
+      $(".modal-body").html(data.title);
     }
   });
 });
