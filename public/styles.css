@@ -1,15 +1,13 @@
-h1 {
+h1, h2 {
     text-align: center;
 }
-#wrapper {
-  /* display: flex;
-  flex-direction: row; */
-}
-
-#user-input {
+#user-input{
     width: 80%;
     padding: 0% 1%;
-    margin: auto;
+    margin:  auto;
+}
+.form-control {
+  margin-bottom: 1%;
 }
 
 #results {

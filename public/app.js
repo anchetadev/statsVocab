@@ -1,7 +1,9 @@
-/* Note Taker (18.2.6)
- * front-end
- * ==================== */
-
+  $("#searchBar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#results *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 // Loads results onto the page
 function getResults() {
   // Empty any results currently on the page

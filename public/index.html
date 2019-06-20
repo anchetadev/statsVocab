@@ -13,15 +13,17 @@
   <body>
     <h1>Statistics Note App</h1>
     <div id="wrapper">
-    <div id="user-input">
-        <input class="form-control" type="text" id ='title'placeholder="Vocab word">
-        <textarea class="form-control" id="note" rows="3" placeholder="Definition"></textarea>
-      <div id="buttons">
-        <div id="action-button">
-          <button id="make-new">Submit</button>
+        <div id="user-input">
+          <input class="form-control" id="searchBar" type="text" placeholder="Search for an existing word">
+          <h2>Create a new vocab word</h2>
+          <input class="form-control" type="text" id ='title'placeholder="Vocab word">
+          <textarea class="form-control" id="note" rows="3" placeholder="Definition"></textarea>
+        <div id="buttons">
+          <div id="action-button">
+            <button id="make-new" class="btn btn-block btn-info">Submit</button>
+          </div>
         </div>
       </div>
-    </div>
 
 
     <div id="results"></div>
