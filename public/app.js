@@ -5,11 +5,7 @@ const isMobile = function () {
     $(".btn-danger:hidden").toggle()
   }
 }
-$(document).on("pageinit",function(){
-  isMobile()
-})
 
- 
  $("#searchBar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#results *").filter(function() {
