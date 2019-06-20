@@ -93,8 +93,8 @@ $(document).on("click", ".dataTitle", function() {
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
       // Fill the inputs with the data that the ajax call collected
-      $(".modal-title").html(data.note);
-      $(".modal-body").html(data.title);
+      $(".modal-title").html(data.title);
+      $(".modal-body").html(data.note);
     }
   });
 });
