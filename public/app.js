@@ -1,4 +1,15 @@
-  $("#searchBar").on("keyup", function() {
+const isMobile = function () {
+  if(screen.width < 767){
+    $(".btn-danger:visible").toggle()
+  }else{
+    $(".btn-danger:hidden").toggle()
+  }
+}
+$(document).ready(function(){
+  isMobile()
+})
+ 
+ $("#searchBar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#results *").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -79,7 +90,7 @@ $(document).on("click", ".btn-danger", function() {
       $("#note").val("");
       $("#title").val("");
       // Make sure the #action-button is submit (in case it's update)
-      $("#action-button").html("<button id='make-new'>Submit</button>");
+      $("#action-button").html('<button id="make-new" class="btn btn-block btn-info">Submit</button>');
     }
   });
 });
