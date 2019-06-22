@@ -1,3 +1,4 @@
+//TO DO: IMPLEMENT AN EDIT OPTION
 const isMobile = function () {
   if(screen.width < 767){
     $(".btn-danger:visible").toggle()
@@ -54,20 +55,6 @@ $(document).on("click", "#make-new", function() {
     });
 });
 
-// // When the #clear-all button is pressed
-// $("#clear-all").on("click", function() {
-//   // Make an AJAX GET request to delete the notes from the db
-//   $.ajax({
-//     type: "GET",
-//     dataType: "json",
-//     url: "/clearall",
-//     // On a successful call, clear the #results section
-//     success: function(response) {
-//       $("#results").empty();
-//     }
-//   });
-// });
-
 
 // When user clicks the delete button for a note
 $(document).on("click", ".btn-danger", function() {
@@ -102,12 +89,30 @@ $(document).on("click", ".dataTitle", function() {
     type: "GET",
     url: "/find/" + selected.attr("data-id"),
     success: function(data) {
-      // Fill the inputs with the data that the ajax call collected
+      console.log(data)
+      // Fill the modal with the data that the ajax call collected
       $(".modal-title").html(data.title);
       $(".modal-body").html(data.note);
+      $(".modal-footer").html("<button type='button' class='btn btn-success' id='editForm' data-dismiss='modal' data-id=" + selected.attr("data-id") +" >Edit Entry</button>")
     }
   });
 });
+//prefill form to edit the entry
+$(document).on("click", "#editForm", function() {
+  var selected = $(this);
+  $.ajax({
+    type: "GET",
+    url: "/find/" + selected.attr("data-id"),
+    success: function(data) {
+      console.log(data)
+      // Fill the inputs with the data that the ajax call collected
+      $("#note").val(data.note);
+      $("#title").val(data.title);
+      $("#action-button").html("<button id='updater' class='btn btn-success btn-block' data-id=" + selected.attr("data-id") +">Edit</button>");
+  }
+
+})
+})
 
 // When user click's update button, update the specific note
 $(document).on("click", "#updater", function() {
@@ -131,7 +136,7 @@ $(document).on("click", "#updater", function() {
       $("#note").val("");
       $("#title").val("");
       // Revert action button to submit
-      $("#action-button").html("<button id='make-new'>Submit</button>");
+      $("#action-button").html("<button id='make-new' class='btn btn-block btn-info'>Submit</button>");
       // Grab the results from the db again, to populate the DOM
       getResults();
     }
