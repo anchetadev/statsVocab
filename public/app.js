@@ -1,4 +1,4 @@
-//TO DO: IMPLEMENT AN EDIT OPTION
+//TO DO: Optimize the isMobile function. Mobile site still somewhat glitchy
 const isMobile = function () {
   if(screen.width < 767){
     $(".btn-danger:visible").toggle()
@@ -6,6 +6,9 @@ const isMobile = function () {
     $(".btn-danger:hidden").toggle()
   }
 }
+window.onload = function() {
+  isMobile();
+};
 
  $("#searchBar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
